@@ -1,33 +1,42 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import * as C from './styles';
+import * as A from '../../App.styles';
 
 import AlbumEntity from "../../../domain/entities/album";
 import { instance as albumRepository } from '../../../domain/repositories/album';
+import Loading from '../../components/Loading';
 
 const HomePage = () => {
 
     const [albums, setAlbums] = useState<AlbumEntity[]>([]);
+    const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        albumRepository.getAllAlbums().then(setAlbums);
+        albumRepository.getAllAlbums().then(setAlbums).finally(() => setLoading(false));
     }, []);
 
-    return (
-        <C.Container>
-            <C.Header>
-                <C.Title>album api json placeholder</C.Title>
-            </C.Header>
-            <C.Content>
+    const handleClickGoAlbumPage = (id: number) => {
+        navigate(`/albums/${id}`);
+    };
+
+    return !loading ? (
+        <A.Container>
+            <A.Header>
+                <A.Title>album api json placeholder</A.Title>
+            </A.Header>
+            <A.Content>
                 {albums.map((album, index) => (
-                    <C.Album key={album.id}>
+                    <C.Album key={album.id} onClick={() => handleClickGoAlbumPage(album.id)}>
                         <C.Order>{index + 1}</C.Order>
                         <C.AlbumTitle>{album.title}</C.AlbumTitle>
                     </C.Album>
                 ))}
-            </C.Content>
-        </C.Container>
-    );
+            </A.Content>
+        </A.Container>
+    ) : (<Loading />);
 };
 
 export default HomePage;
