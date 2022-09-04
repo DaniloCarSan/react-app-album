@@ -12,7 +12,11 @@ class AlbumRepository {
     }
 
     public async getAllAlbums() {
-        return await this.datasource.getAllAlbums();
+        return await this.datasource.all();
+    }
+
+    public async byId(id: number) {
+        return await this.datasource.byId(id);
     }
 
 }

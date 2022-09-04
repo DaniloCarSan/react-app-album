@@ -12,8 +12,13 @@ export class AlbumDataSource {
         this.api = api;
     }
 
-    public async getAllAlbums(): Promise<AlbumEntity[]> {
+    public async all(): Promise<AlbumEntity[]> {
         const response = await this.api.get(this.resorce)
+        return response.data;
+    }
+
+    public async byId(id: number): Promise<AlbumEntity> {
+        const response = await this.api.get(`${this.resorce}/${id}`)
         return response.data;
     }
 
