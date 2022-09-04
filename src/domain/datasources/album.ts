@@ -1,5 +1,5 @@
 import { AxiosInstance } from "axios";
-import api from "../datasources/api";
+import api from "./api";
 import AlbumEntity from "../entities/album";
 
 export class AlbumDataSource {
