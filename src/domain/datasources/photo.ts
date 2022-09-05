@@ -19,7 +19,7 @@ export class PhotoDataSource {
     }
 
     public async byId(id: number): Promise<Photo> {
-        const response = await this.api.get(`/${id}${PhotoDataSource.resource}/${id}`)
+        const response = await this.api.get(`/${PhotoDataSource.resource}/${id}`)
         return response.data;
     }
 
