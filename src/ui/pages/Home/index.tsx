@@ -4,18 +4,18 @@ import { useNavigate } from 'react-router-dom';
 import * as C from './styles';
 import * as A from '../../App.styles';
 
-import AlbumEntity from "../../../domain/entities/album";
+import Album from "../../../domain/entities/album";
 import { instance as albumRepository } from '../../../domain/repositories/album';
 import Loading from '../../components/Loading';
 
 const HomePage = () => {
 
-    const [albums, setAlbums] = useState<AlbumEntity[]>([]);
+    const [albums, setAlbums] = useState<Album[]>([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
-        albumRepository.getAllAlbums().then(setAlbums).finally(() => setLoading(false));
+        albumRepository.all().then(setAlbums).finally(() => setLoading(false));
     }, []);
 
     const handleClickGoAlbumPage = (id: number) => {

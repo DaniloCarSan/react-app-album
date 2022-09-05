@@ -1,8 +1,8 @@
-type AlbumEntity = {
+type Album = {
     id: number;
     title: string;
     userId: number;
 };
 
-export default AlbumEntity;
+export default Album;
 

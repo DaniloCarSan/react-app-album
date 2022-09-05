@@ -11,7 +11,7 @@ class AlbumRepository {
         this.datasource = datasource;
     }
 
-    public async getAllAlbums() {
+    public async all() {
         return await this.datasource.all();
     }
 
