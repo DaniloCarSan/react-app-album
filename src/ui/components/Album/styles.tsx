@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Album = styled.div`
+export const Container = styled.div`
     padding: 25px;
     border-bottom: 1px solid #eee;
     transition: all 0.2s ease-in-out;
@@ -19,7 +19,7 @@ export const Order = styled.div`
     margin-right: 20px;
 `;
 
-export const AlbumTitle = styled.div`
+export const Title = styled.div`
     text-transform: capitalize;
     font-size: 20px;
 `;

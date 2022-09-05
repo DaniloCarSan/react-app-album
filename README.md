@@ -1,4 +1,11 @@
-# Getting Started with Create React App
+# React App Album
+
+
+Um simples aplicativo em react consumindo a api json placeholder
+
+
+Curso b7web
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import * as C from './styles';
 import * as A from '../../App.styles';
 
 import Album from "../../../domain/entities/album";
 import { instance as albumRepository } from '../../../domain/repositories/album';
 import Loading from '../../components/Loading';
+import AlbumCard from '../../components/Album';
 
 const HomePage = () => {
 
@@ -28,12 +28,7 @@ const HomePage = () => {
                 <A.Title>album api json placeholder</A.Title>
             </A.Header>
             <A.Content>
-                {albums.map((album, index) => (
-                    <C.Album key={album.id} onClick={() => handleClickGoAlbumPage(album.id)}>
-                        <C.Order>{index + 1}</C.Order>
-                        <C.AlbumTitle>{album.title}</C.AlbumTitle>
-                    </C.Album>
-                ))}
+                {albums.map((album, index) => (<AlbumCard key={album.id} album={album} index={index} onClick={handleClickGoAlbumPage} />))}
             </A.Content>
         </A.Container>
     ) : (<Loading />);
